@@ -1,28 +1,72 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Iniciar Sesión</title>
+    <title>Login Page</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('tu-imagen-de-fondo.jpg') no-repeat center center fixed; 
+            background-size: cover;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.5); /* Añade transparencia al fondo */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px; /* O el ancho que prefieras */
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5c6bc0;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3f51b5;
+        }
+    </style>
 </head>
 <body>
-    <div th:if="${param.error}">
-        Credenciales inválidas.
-    </div>
-    <div th:if="${param.logout}">
-        Has cerrado la sesión con éxito.
-    </div>
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required autofocus>
+
+<div class="login-container">
+    <form action="/tu-endpoint-de-login" method="post">
+        <div class="form-group">
+            <label for="email">Email ID</label>
+            <input type="email" id="email" name="email" required>
         </div>
-        <div>
-            <label for="password">Contraseña:</label>
+        <div class="form-group">
+            <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <div>
-            <button type="submit">Iniciar Sesión</button>
+        <div class="form-group">
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Remember me</label>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="LOGIN">
         </div>
     </form>
+</div>
+
 </body>
 </html>
