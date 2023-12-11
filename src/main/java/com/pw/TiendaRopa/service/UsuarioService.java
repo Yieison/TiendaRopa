@@ -3,14 +3,18 @@ package com.pw.TiendaRopa.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.pw.TiendaRopa.security.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.pw.TiendaRopa.model.Usuario;
 import com.pw.TiendaRopa.repository.UsuarioRepository;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements UserDetailsService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -49,5 +53,12 @@ public class UsuarioService {
                     usuarioActualizado.setId(id);
                     return usuarioRepository.save(usuarioActualizado);
                 });
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
+        Usuario usuario = usuarioRepository.findByCorreo(correo)
+                .orElseThrow(() -> new UsernameNotFoundException("No se encontró usuario con correo: " + correo));
+        return new CustomUserDetails(usuario);
     }
 }
