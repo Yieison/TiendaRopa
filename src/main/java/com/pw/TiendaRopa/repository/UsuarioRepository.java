@@ -1,9 +1,10 @@
 package com.pw.TiendaRopa.repository;
 
-import com.pw.TiendaRopa.model.Usuario;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import com.pw.TiendaRopa.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByCorreo(String correo);

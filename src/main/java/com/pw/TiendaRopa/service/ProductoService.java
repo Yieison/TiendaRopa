@@ -1,12 +1,13 @@
 package com.pw.TiendaRopa.service;
 
-import com.pw.TiendaRopa.model.Producto;
-import com.pw.TiendaRopa.repository.ProductoRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.pw.TiendaRopa.model.Producto;
+import com.pw.TiendaRopa.repository.ProductoRepository;
 
 @Service
 public class ProductoService {

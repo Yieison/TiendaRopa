@@ -1,4 +1,4 @@
-package com.pw.TiendaRopa.config;
+/*package com.pw.TiendaRopa.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,3 +22,4 @@ public class WebConfig {
         };
     }
 }
+*/

@@ -1,4 +1,4 @@
-package com.pw.TiendaRopa.security;
+/*package com.pw.TiendaRopa.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ public class SecurityConfig {
             .anyRequest().authenticated()
             .and()
             .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
-        
+
         return http.build();
     }
 
@@ -28,4 +28,4 @@ public class SecurityConfig {
     public JwtAuthorizationFilter jwtAuthorizationFilter() {
         return new JwtAuthorizationFilter();
     }
-}
+}*/
