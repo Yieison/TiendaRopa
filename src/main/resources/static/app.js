@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('/api/products') // Cambia esta URL por la ruta correcta de tu API
+    fetch('/api/productos')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
