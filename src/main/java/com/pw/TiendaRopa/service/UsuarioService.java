@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pw.TiendaRopa.model.Usuario;
@@ -18,6 +19,9 @@ public class UsuarioService implements UserDetailsService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<Usuario> listarUsuarios() {
         return usuarioRepository.findAll();
@@ -31,7 +35,9 @@ public class UsuarioService implements UserDetailsService {
         return usuarioRepository.findByCorreo(correo);
     }
 
+    
     public Usuario guardarUsuario(Usuario usuario) {
+    	usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
         return usuarioRepository.save(usuario);
     }
 
@@ -45,7 +51,7 @@ public class UsuarioService implements UserDetailsService {
                     usuario.setDocumentoIdentidad(usuarioActualizado.getDocumentoIdentidad());
                     usuario.setNombre(usuarioActualizado.getNombre());
                     usuario.setCorreo(usuarioActualizado.getCorreo());
-                    usuario.setContrasena(usuarioActualizado.getContrasena());
+                    usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
                     usuario.setDireccion(usuarioActualizado.getDireccion());
                     usuario.setNumeroCelular(usuarioActualizado.getNumeroCelular());
                     return usuarioRepository.save(usuario);

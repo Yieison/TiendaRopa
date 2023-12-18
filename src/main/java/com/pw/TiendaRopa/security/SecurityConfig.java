@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -23,7 +24,7 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .authorizeRequests()
-                .requestMatchers("/login","/public/**", "/auth/**", "/index.html", "/api/**", "/css/**").permitAll()
+                .requestMatchers("/login", "/registro","/public/**", "/auth/**", "/index.html", "/api/**", "/css/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -38,8 +39,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // Esto es inseguro y se usa solo para propósitos de demostración
-        return NoOpPasswordEncoder.getInstance();
+    	return new BCryptPasswordEncoder();
     }
 
     @Bean

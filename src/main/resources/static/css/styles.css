@@ -48,8 +48,7 @@
 			/* Ajusta el tamaño de fuente según necesites */
 		}
 
-		input[type="email"],
-		input[type="password"] {
+		input {
 			width: calc(100% - 20px);
 			padding: 10px;
 			margin: 5px 0;
