@@ -1,4 +1,4 @@
-	/*package com.pw.TiendaRopa.security;
+package com.pw.TiendaRopa.security;
 	
 	import java.util.Date;
 	import java.util.function.Function;
@@ -56,4 +56,4 @@
 	        final Date expiration = getExpirationDateFromToken(token);
 	        return expiration.before(new Date());
 	    }
-	}*/
+	}
